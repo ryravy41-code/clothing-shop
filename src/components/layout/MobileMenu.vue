@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { ref } from 'vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
+import ConfirmDialog from '@/components/ui/ConfirmDialog.vue'
 import { useAuthStore } from '@/stores/auth'
 
 defineProps<{ modelValue: boolean }>()
 const emit = defineEmits<{ close: [] }>()
 
 const auth = useAuthStore()
+const logoutOpen = ref(false)
 
 const shopLinks = [
   { label: 'Men', to: '/category/men' },
@@ -49,8 +52,8 @@ const helpLinks = [
         <div class="absolute inset-0 bg-ink/50 backdrop-blur-sm animate-fade" @click="emit('close')" />
         <div class="absolute inset-y-0 left-0 flex w-[88%] max-w-sm flex-col bg-bone shadow-2xl animate-slide-in-left">
           <div class="flex items-center justify-between border-b border-charcoal/10 px-6 py-5">
-            <RouterLink to="/" class="font-display text-xl tracking-[0.24em]" @click="emit('close')">
-              VESTE
+            <RouterLink to="/" @click="emit('close')">
+              <img src="/logo.png" alt="VESTE" class="h-11 w-auto" />
             </RouterLink>
             <button
               type="button"
@@ -128,7 +131,7 @@ const helpLinks = [
                 <button
                   type="button"
                   class="flex w-full items-center gap-1 rounded-xl px-3 py-2.5 text-sm font-medium text-clay transition hover:bg-clay/5"
-                  @click="auth.logout(); emit('close')"
+                  @click="logoutOpen = true"
                 >
                   <AppIcon name="logout" :size="15" />
                   Sign out
@@ -155,6 +158,15 @@ const helpLinks = [
         </div>
       </div>
     </Transition>
+    <ConfirmDialog
+      :open="logoutOpen"
+      title="Sign out?"
+      message="Are you sure you want to sign out of your account?"
+      confirm-label="Sign out"
+      danger
+      @confirm="auth.logout(); logoutOpen = false; emit('close')"
+      @cancel="logoutOpen = false"
+    />
   </Teleport>
 </template>
 

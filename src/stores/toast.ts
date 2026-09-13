@@ -1,7 +1,8 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { Toast } from '@/types'
-import { uid } from '@/utils/format'
+
+let nextId = 0
 
 export const useToastStore = defineStore('toast', () => {
   const toasts = ref<Toast[]>([])
@@ -11,7 +12,7 @@ export const useToastStore = defineStore('toast', () => {
   }
 
   function push(toast: Omit<Toast, 'id'>) {
-    const id = Number(uid())
+    const id = ++nextId
     toasts.value.push({ ...toast, id })
     window.setTimeout(() => remove(id), 4000)
   }

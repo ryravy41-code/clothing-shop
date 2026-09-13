@@ -73,3 +73,23 @@ One tailored image-generation prompt for each women's item in the shop. Each pro
 **Product data:** French terry / Grey, Beige, Black / US 98 / Mono Studio
 
 > Professional high-end fashion e-commerce photograph of an adult female model wearing a coordinated weekend set of relaxed joggers and a hoodie. 280 gsm French terry with quiet-luxury off-duty styling, relaxed jogger with elastic cuff, tonal drawcords. Preserve the original colour choice, featherweight French terry texture and relaxed silhouette exactly. Full-body model, natural elegant pose, clean luxury studio background, soft diffused lighting, realistic skin and fabric texture, sharp garment details, premium fashion catalog aesthetic, photorealistic, no text, no watermark, no extra clothing changes. The garment must remain the primary focus of the image.
+
+---
+
+## 10. Structured Prompt — Floral Midi Dress
+
+```json
+{
+  "product": "Floral Midi Dress",
+  "category": "women",
+  "scene": "luxury fashion editorial",
+  "model": "adult female fashion model",
+  "outfit": "wearing the exact product",
+  "styling": "minimal elegant accessories",
+  "pose": "natural standing pose",
+  "lighting": "soft studio lighting",
+  "background": "clean warm neutral studio",
+  "composition": "full-body fashion photography",
+  "quality": "high-end editorial, photorealistic"
+}
+```

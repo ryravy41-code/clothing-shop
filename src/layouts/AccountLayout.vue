@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
+import ConfirmDialog from '@/components/ui/ConfirmDialog.vue'
 import ToastContainer from '@/components/ui/ToastContainer.vue'
 import { useAuthStore } from '@/stores/auth'
 
 const route = useRoute()
 const auth = useAuthStore()
+const logoutOpen = ref(false)
 
 const links = [
   { label: 'Dashboard', to: '/account', icon: 'home' },
@@ -52,7 +55,7 @@ const links = [
               <button
                 type="button"
                 class="flex shrink-0 items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm font-medium text-clay transition hover:bg-clay/5"
-                @click="auth.logout()"
+                @click="logoutOpen = true"
               >
                 <AppIcon name="logout" :size="16" />
                 Sign out
@@ -72,6 +75,15 @@ const links = [
     </main>
     <AppFooter />
     <ToastContainer />
+    <ConfirmDialog
+      :open="logoutOpen"
+      title="Sign out?"
+      message="Are you sure you want to sign out of your account?"
+      confirm-label="Sign out"
+      danger
+      @confirm="logoutOpen = false; auth.logout()"
+      @cancel="logoutOpen = false"
+    />
   </div>
 </template>
 

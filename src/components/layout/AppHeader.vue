@@ -5,6 +5,7 @@ import AppIcon from '@/components/ui/AppIcon.vue'
 import MegaMenu from './MegaMenu.vue'
 import MobileMenu from './MobileMenu.vue'
 import SearchOverlay from './SearchOverlay.vue'
+import ConfirmDialog from '@/components/ui/ConfirmDialog.vue'
 import { useCartStore } from '@/stores/cart'
 import { useWishlistStore } from '@/stores/wishlist'
 import { useAuthStore } from '@/stores/auth'
@@ -17,6 +18,7 @@ const scrolled = ref(false)
 const mobileOpen = ref(false)
 const searchOpen = ref(false)
 const accountOpen = ref(false)
+const logoutOpen = ref(false)
 
 function onScroll() {
   scrolled.value = window.scrollY > 14
@@ -53,7 +55,7 @@ function toggleCart() {
   <header class="sticky top-0 z-50">
     <div class="bg-ink text-center text-bone">
       <p class="wrap flex items-center justify-center gap-1.5 py-2 text-[11px] font-medium tracking-[0.16em] uppercase sm:text-xs">
-        <AppIcon name="sparkles" :size="13" class="text-gold" />
+        
         {{ activeAnnouncement }}
       </p>
     </div>
@@ -75,8 +77,7 @@ function toggleCart() {
             <AppIcon name="menu" :size="22" />
           </button>
           <RouterLink to="/" class="flex items-center gap-2" aria-label="VESTE home">
-            <span class="font-display text-2xl tracking-[0.22em] text-charcoal">VESTE</span>
-            <span class="mt-1 hidden h-px w-8 bg-gold sm:block" />
+            <img src="/logo.png" alt="VESTE" class="h-110 w-auto sm:h-14" />
           </RouterLink>
         </div>
 
@@ -132,7 +133,7 @@ function toggleCart() {
                     <button
                       type="button"
                       class="flex w-full items-center gap-2 rounded-xl px-4 py-2.5 text-sm text-clay transition hover:bg-clay/5"
-                      @click="auth.logout(); accountOpen = false"
+                      @click="accountOpen = false; logoutOpen = true"
                     >
                       <AppIcon name="logout" :size="15" />
                       Sign out
@@ -188,6 +189,15 @@ function toggleCart() {
 
     <MobileMenu :model-value="mobileOpen" @close="mobileOpen = false" />
     <SearchOverlay :open="searchOpen" @close="searchOpen = false" />
+    <ConfirmDialog
+      :open="logoutOpen"
+      title="Sign out?"
+      message="Are you sure you want to sign out of your account?"
+      confirm-label="Sign out"
+      danger
+      @confirm="auth.logout(); logoutOpen = false"
+      @cancel="logoutOpen = false"
+    />
   </header>
 </template>
 

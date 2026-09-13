@@ -15,31 +15,31 @@ export const CATEGORIES: CategoryInfo[] = [
     id: 'men',
     label: 'Men',
     tagline: 'Tailored essentials & everyday staples',
-    image: img('1490481651871-ab68de25d43d'),
+    image: 'https://i.pinimg.com/1200x/27/0d/b4/270db45adf17fe3be69ca93b6f62ef86.jpg'
   },
   {
     id: 'women',
     label: 'Women',
     tagline: 'Elegant silhouettes, effortless finish',
-    image: img('1524504388940-b1c1722653e1'),
+    image: 'https://i.pinimg.com/1200x/d0/65/5e/d0655e9e66c5f5e64431facff100fbf7.jpg',
   },
   {
     id: 'kids',
     label: 'Kids',
     tagline: 'Playful pieces made to last',
-    image: img('1485546246426-74dc88dec4d9'),
+    image: 'https://i.pinimg.com/736x/df/0d/01/df0d018fcebe3ee099b8caf00e16dc8b.jpg',
   },
   {
     id: 'shoes',
     label: 'Shoes',
     tagline: 'From boardroom to boulevard',
-    image: img('1543163521-1bf539c55dd2'),
+    image: 'https://i.pinimg.com/1200x/85/de/fe/85defea5e2c60701b0879f0e25fae7f1.jpg',
   },
   {
     id: 'accessories',
     label: 'Accessories',
     tagline: 'The finishing touches',
-    image: img('1523275335684-37898b6baf30'),
+    image: 'https://i.pinimg.com/736x/15/64/00/156400223b4ac2957fdb86ea8a91876c.jpg',
   },
   {
     id: 'new-arrivals',

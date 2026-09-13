@@ -21,10 +21,7 @@ const filterStore = useFilterStore()
 const ui = reactive({
   showFilters: false,
   layout: ('grid' as 'grid' | 'list'),
-  page: 1,
 })
-
-const PAGE_SIZE = 12
 
 const categoryFromRoute = computed<CategoryId | 'all'>(() => {
   const raw = route.params.category
@@ -50,7 +47,6 @@ function hydrate() {
   if (discountFromRoute.value !== filterStore.filters.discountOnly) {
     filterStore.toggleDiscountOnly()
   }
-  ui.page = 1
 }
 
 hydrate()
@@ -104,19 +100,11 @@ const filtered = computed(() => {
   return productStore.sortProducts(list, f.sort)
 })
 
-const paginated = computed(() => {
-  const start = (ui.page - 1) * PAGE_SIZE
-  return filtered.value.slice(start, start + PAGE_SIZE)
-})
-
-const totalPages = computed(() => Math.max(1, Math.ceil(filtered.value.length / PAGE_SIZE)))
-
 const inRange = (val: number | null, fallback: number) => val ?? fallback
 
 function clearAll() {
   filterStore.reset()
   filterStore.setCategory(categoryFromRoute.value)
-  ui.page = 1
 }
 
 const priceBounds = computed(() => {
@@ -372,7 +360,7 @@ function selectCategory(id: CategoryId | 'all') {
           @retry="productStore.fetchProducts()"
         />
 
-        <div v-else-if="paginated.length === 0" class="lg:col-span-2">
+        <div v-else-if="filtered.length === 0" class="lg:col-span-2">
           <EmptyState
             icon="search"
             title="No products match your filters"
@@ -390,46 +378,12 @@ function selectCategory(id: CategoryId | 'all') {
           ]"
         >
           <ProductCard
-            v-for="p in paginated"
+            v-for="p in filtered"
             :key="p.id"
             :product="p"
             :layout="ui.layout"
             :class="ui.layout === 'list' ? 'lg:!flex-row' : ''"
           />
-        </div>
-
-        <div v-if="totalPages > 1" class="mt-10 flex items-center justify-center gap-2">
-          <button
-            type="button"
-            class="btn-icon border border-charcoal/15 bg-white disabled:opacity-40"
-            :disabled="ui.page <= 1"
-            aria-label="Previous page"
-            @click="ui.page--"
-          >
-            <AppIcon name="chev-left" :size="17" />
-          </button>
-          <button
-            v-for="p in totalPages"
-            :key="p"
-            type="button"
-            :class="[
-              'flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-sm font-semibold transition',
-              p === ui.page ? 'bg-charcoal text-bone' : 'bg-white text-charcoal/60 hover:text-charcoal',
-            ]"
-            :aria-label="`Go to page ${p}`"
-            @click="ui.page = p"
-          >
-            {{ p }}
-          </button>
-          <button
-            type="button"
-            class="btn-icon border border-charcoal/15 bg-white disabled:opacity-40"
-            :disabled="ui.page >= totalPages"
-            aria-label="Next page"
-            @click="ui.page++"
-          >
-            <AppIcon name="chev-right" :size="17" />
-          </button>
         </div>
       </div>
     </div>
