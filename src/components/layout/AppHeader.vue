@@ -77,7 +77,7 @@ function toggleCart() {
             <AppIcon name="menu" :size="22" />
           </button>
           <RouterLink to="/" class="flex items-center gap-2" aria-label="VESTE home">
-            <img src="/logo.png" alt="VESTE" class="h-110 w-auto sm:h-14" />
+            <img src="/logo.png" alt="VESTE" class="h-10 w-auto md:h-14" />
           </RouterLink>
         </div>
 
@@ -210,5 +210,12 @@ function toggleCart() {
 .pop-leave-to {
   opacity: 0;
   transform: translateY(-6px) scale(0.98);
+}
+@media (max-width: 768px) {
+  :deep(.flex.items-center.gap-2 img) {
+    height: 2.5rem;
+    width: auto;
+    max-width: 100%;
+  }
 }
 </style>

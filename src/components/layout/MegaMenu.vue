@@ -112,6 +112,14 @@ const megaItems = (category: string) =>
       </li>
       <li>
         <RouterLink
+          to="/contact"
+          class="rounded-full px-4 py-2.5 text-sm font-medium tracking-wide text-gold transition hover:bg-charcoal/5 hover:text-gold"
+        >
+          Contact
+        </RouterLink>
+      </li>
+      <li>
+        <RouterLink
           to="/category/new-arrivals"
           class="rounded-full px-4 py-2.5 text-sm font-medium tracking-wide text-charcoal/85 transition hover:bg-charcoal/5 hover:text-charcoal"
         >

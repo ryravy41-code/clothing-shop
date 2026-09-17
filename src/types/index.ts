@@ -71,7 +71,7 @@ export type WishlistItem = {
 }
 
 export type DeliveryMethod = 'standard' | 'express'
-export type PaymentMethodType = 'card' | 'cod' | 'wallet'
+export type PaymentMethodType = 'card' | 'cod' | 'wallet' | 'qr'
 
 export interface ShippingAddress {
   id: string
