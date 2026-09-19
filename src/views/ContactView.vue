@@ -45,9 +45,6 @@ const googleMapsUrl =
  *
  * Google Maps → Share → Embed a map → Copy HTML
  */
-const googleMapsEmbedUrl =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.173!2d104.916!3d11.567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109517a4d8f5e01%3A0x4d8f5e01!2sPhnom+Penh%2C+Cambodia!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus'
-
 const contactChannels = [
   {
     icon: 'map-pin',
