@@ -110,14 +110,7 @@ const megaItems = (category: string) =>
           </div>
         </div>
       </li>
-      <li>
-        <RouterLink
-          to="/contact"
-          class="rounded-full px-4 py-2.5 text-sm font-medium tracking-wide text-gold transition hover:bg-charcoal/5 hover:text-gold"
-        >
-          Contact
-        </RouterLink>
-      </li>
+      
       <li>
         <RouterLink
           to="/category/new-arrivals"
@@ -132,6 +125,14 @@ const megaItems = (category: string) =>
           class="rounded-full px-4 py-2.5 text-sm font-semibold tracking-wide text-clay transition hover:bg-clay/5"
         >
           Sale
+        </RouterLink>
+      </li>
+      <li>
+        <RouterLink
+          to="/contact"
+          class="rounded-full px-4 py-2.5 text-sm font-medium tracking-wide text-gold transition hover:bg-charcoal/5 hover:text-gold"
+        >
+          Contact
         </RouterLink>
       </li>
     </ul>
