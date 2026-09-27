@@ -64,9 +64,9 @@ const PERKS = [
           materials and made to live in your wardrobe for years.
         </p>
         <div class="mt-8 flex flex-wrap gap-3 animate-fade-in" style="animation-delay: 180ms">
-          <RouterLink to="/category/men">
+          <RouterLink to="/category/all">
             <BaseButton size="lg" class="bg-white text-charcoal hover:bg-bone">
-              Shop Men
+              Shop
             </BaseButton>
           </RouterLink>
           <RouterLink to="/category/women">

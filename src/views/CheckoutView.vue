@@ -276,10 +276,7 @@ function formatMoney(v: number) {
               <BaseInput v-model="newAddress.country" label="Country" />
             </div>
           </div>
-          <div class="mt-8 flex justify-between">
-            <BaseButton variant="outline" @click="current = 0">Start over</BaseButton>
-            <BaseButton @click="current = 1">Continue</BaseButton>
-          </div>
+
         </section>
 
         <!-- STEP 1 : DELIVERY -->
@@ -328,10 +325,7 @@ function formatMoney(v: number) {
               <AppIcon name="info" :size="16" class="text-gold" />
               Standard shipping is free on orders over $150. Express is flat rate.
             </p>
-            <div class="mt-6 flex justify-between">
-              <BaseButton variant="outline" @click="current = 0">Back</BaseButton>
-              <BaseButton @click="current = 2">Continue</BaseButton>
-            </div>
+
           </div>
         </section>
 
@@ -457,10 +451,7 @@ function formatMoney(v: number) {
             <div class="mt-8 p-4 rounded-3xl border border-charcoal/8 bg-bone/60 text-sm text-charcoal">
               <p class="font-semibold text-charcoal">Order total</p>
               <p class="mt-2 text-2xl font-bold text-charcoal">{{ formatMoney(orderTotal) }}</p>
-              <BaseButton size="lg" variant="gold" @click="placeOrder">
-                <AppIcon name="lock" :size="17" />
-                Place order
-              </BaseButton>
+             
             </div>
           </div>
         </section>
